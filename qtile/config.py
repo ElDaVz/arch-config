@@ -229,8 +229,11 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def autostart():
-    subprocess.Popen("feh", "--bg-center", "home/daniel/Descargas/wallpaperflare.com_wallpaper.jpg")
-    home = os.path.expanduser("~/.confi/qtile/autostart.sh")
+    home = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.Popen([home])
-def set_keyboard():
-    subprocess.run(["setxkbmap", "latam"])
+     subprocess.Popen([
+        "feh",
+        "--bg-center",
+        "/home/daniel/Descargas/wallpaperflare.com_wallpaper.jpg"  # ✅ Fixed path (was missing leading /)
+    ])
+    subprocess.run(["setxkbmap", "latam"])  # This is fine
