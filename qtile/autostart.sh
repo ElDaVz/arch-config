@@ -4,10 +4,11 @@
 setxkbmap latam &
 
 # Fondo
-feh --bg-scale ~/Imágenes/wallpaper.jpg &
+feh --bg-scale ~/dotfiles/wallpapers/wallpaper.jpg &
 
 # Compositor
 picom &
+
 xbindkeys &
+
 ~/.config/polybar/launch.sh &
-~/.fehbg &
