@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sleep 1
-
 # Teclado
 setxkbmap latam &
 
@@ -10,3 +8,5 @@ feh --bg-scale ~/Imágenes/wallpaper.jpg &
 
 # Compositor
 picom &
+
+xbindkeys &
