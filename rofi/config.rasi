@@ -1,0 +1,85 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: "";
+}
+
+@theme "default"
+
+window {
+    transparency: "real";
+    width: 450px;
+    border-radius: 8px;
+    background-color: #000000CC;
+    border: 2px;
+    border-color: #FFFFFFFF;
+    padding: 12px;
+}
+
+mainbox {
+    spacing: 10px;
+    margin: 0;
+    padding: 8px;
+    children: ["inputbar", "listview"];
+}
+
+inputbar {
+    children: ["prompt", "entry"];
+    spacing: 10px;
+    background-color: #111111FF;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+prompt {
+    text-color: #FFFFFFFF;
+}
+
+entry {
+    placeholder: "Search Apps";
+    text-color: #FFFFFFFF;
+    placeholder-color: #888888FF;
+}
+
+listview {
+    columns: 1;
+    lines: 7;
+    fixed-height: true;
+    fixed-columns: true;
+    cycle: false;
+    scrollbar: false;
+    border: 0px;
+    spacing: 4px;
+}
+
+element {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: #FFFFFFFF;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: #FFFFFFFF;
+}
+
+element alternate.normal {
+    background-color: #111111FF;
+    text-color: #FFFFFFFF;
+}
+
+element selected.normal {
+    background-color: #FFFFFFFF;
+    text-color: #000000FF;
+}
+
+element selected.active {
+    background-color: #FFFFFFFF;
+    text-color: #000000FF;
+}
+
+element-icon {
+    size: 24px;
+    margin: 0 8px 0 0;
+}
