@@ -13,34 +13,70 @@ mod = "mod4"
 terminal = guess_terminal()
 
 keys = [
-    Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Launch rofi"),
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
-    Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle split"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "e", lazy.spawn("nautilus"), desc="Open file manager"),
+    # --- FOCUS (vim keys) ---
+    # Move focus between windows with hjkl
+    Key([mod], "h", lazy.layout.left()),
+    Key([mod], "l", lazy.layout.right()),
+    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "k", lazy.layout.up()),
+
+    # --- MOVE WINDOWS (vim keys) ---
+    # Shuffle windows around with shift+hjkl
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+
+    # --- RESIZE WINDOWS (arrow keys) ---
+    # ✅ NEW: grow/shrink with arrows instead of ctrl+hjkl (more intuitive)
+    Key([mod], "Right", lazy.layout.grow_right()),
+    Key([mod], "Left", lazy.layout.grow_left()),
+    Key([mod], "Up", lazy.layout.grow_up()),
+    Key([mod], "Down", lazy.layout.grow_down()),
+    Key([mod], "n", lazy.layout.normalize(), desc="Reset window sizes"),
+
+    # --- MOVE WINDOW TO WORKSPACE ---
+    # ✅ NEW: send window to another group without switching to it
+    Key([mod, "shift"], "1", lazy.window.togroup("1")),
+    Key([mod, "shift"], "2", lazy.window.togroup("2")),
+    Key([mod, "shift"], "3", lazy.window.togroup("3")),
+    Key([mod, "shift"], "4", lazy.window.togroup("4")),
+
+    # --- LAYOUTS ---
+    # ✅ KEPT: cycle layouts
+    Key([mod], "Tab", lazy.next_layout()),
+    # ✅ NEW: toggle fullscreen and floating
+    Key([mod], "f", lazy.window.toggle_fullscreen()),
+    Key([mod], "t", lazy.window.toggle_floating()),
+
+    # --- APPS ---
+    Key([mod], "Return", lazy.spawn(terminal)),
+    Key([mod], "r", lazy.spawn("rofi -show drun")),
+    Key([mod], "e", lazy.spawn("nautilus")),
+    # ✅ NEW: screenshot with scrot
+    Key([mod, "shift"], "s", lazy.spawn("scrot -s ~/Pictures/screenshot.png")),
+
+    # --- WINDOW MANAGEMENT ---
+    Key([mod], "w", lazy.window.kill()),
+    # ✅ NEW: focus urgent window
+    Key([mod], "u", lazy.next_urgent()),
+
+    # --- QTILE ---
+    # ✅ CHANGED: both ctrl+r and shift+r reload (shift+r is faster)
+    Key([mod, "control"], "r", lazy.reload_config()),
+    Key([mod, "shift"], "r", lazy.reload_config()),
+    Key([mod, "control"], "q", lazy.shutdown()),
+
+    # --- VOLUME ---
+    # ✅ KEPT: media keys
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
+
+    # --- BRIGHTNESS ---
+    # ✅ NEW: brightness control (requires brightnessctl)
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
 ]
 
 for vt in range(1, 8):

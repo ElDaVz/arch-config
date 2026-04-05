@@ -10,9 +10,8 @@ killall -q picom
 killall -q xbindkeys
 
 # Compositor
-picom --config ~/.config/picom/picom.conf &
+picom &
 
 xbindkeys &
 
-#Bar
 ~/.config/polybar/launch.sh &
