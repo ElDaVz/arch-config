@@ -2,6 +2,7 @@ configuration {
     modi: "drun";
     show-icons: true;
     display-drun: "";
+    font: "InconsolataGo Nerd Font Mono 13";
 }
 
 @theme "default"
@@ -9,44 +10,41 @@ configuration {
 window {
     transparency: "real";
     width: 450px;
-    border-radius: 8px;
-    background-color: #000000CC;
+    border-radius: 12px;
+    background-color: #1e203070;
     border: 2px;
-    border-color: #FFFFFFFF;
+    border-color: #1e203070;
     padding: 12px;
 }
 
 mainbox {
-    spacing: 10px;
-    margin: 0;
+    spacing: 8px;
     padding: 8px;
     children: ["inputbar", "listview"];
 }
 
 inputbar {
     children: ["prompt", "entry"];
-    spacing: 10px;
-    background-color: #111111FF;
+    spacing: 8px;
+    background-color: #2d314999;
     border-radius: 8px;
     padding: 8px 12px;
 }
 
 prompt {
-    text-color: #FFFFFFFF;
+    text-color: #82aaff;
 }
 
 entry {
     placeholder: "Search Apps";
-    text-color: #FFFFFFFF;
-    placeholder-color: #888888FF;
+    text-color: #c8d3f5;
+    placeholder-color: #82aaff;
 }
 
 listview {
     columns: 1;
     lines: 7;
     fixed-height: true;
-    fixed-columns: true;
-    cycle: false;
     scrollbar: false;
     border: 0px;
     spacing: 4px;
@@ -55,28 +53,16 @@ listview {
 element {
     padding: 8px 12px;
     border-radius: 8px;
-    background-color: transparent;
-    text-color: #FFFFFFFF;
-}
-
-element normal.normal {
-    background-color: transparent;
-    text-color: #FFFFFFFF;
-}
-
-element alternate.normal {
-    background-color: #111111FF;
-    text-color: #FFFFFFFF;
+    background-color: #243ed366;
+    text-color: #c8d3f5;
 }
 
 element selected.normal {
-    background-color: #FFFFFFFF;
-    text-color: #000000FF;
-}
-
-element selected.active {
-    background-color: #FFFFFFFF;
-    text-color: #000000FF;
+    background-color: #82aaff33;
+    text-color: #82aaff;
+    border: 1px;
+    border-color: #82aaff;
+    border-radius: 8px;
 }
 
 element-icon {

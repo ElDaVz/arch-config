@@ -10,7 +10,7 @@ from libqtile.utils import guess_terminal
 from libqtile import hook
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "kitty"
 
 keys = [
     # --- FOCUS (vim keys) ---
@@ -35,13 +35,6 @@ keys = [
     Key([mod], "Down", lazy.layout.grow_down()),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset window sizes"),
 
-    # --- MOVE WINDOW TO WORKSPACE ---
-    # ✅ NEW: send window to another group without switching to it
-    Key([mod, "shift"], "1", lazy.window.togroup("1")),
-    Key([mod, "shift"], "2", lazy.window.togroup("2")),
-    Key([mod, "shift"], "3", lazy.window.togroup("3")),
-    Key([mod, "shift"], "4", lazy.window.togroup("4")),
-
     # --- LAYOUTS ---
     # ✅ KEPT: cycle layouts
     Key([mod], "Tab", lazy.next_layout()),
@@ -54,7 +47,7 @@ keys = [
     Key([mod], "r", lazy.spawn("rofi -show drun")),
     Key([mod], "e", lazy.spawn("nautilus")),
     # ✅ NEW: screenshot with scrot
-    Key([mod, "shift"], "s", lazy.spawn("scrot -s ~/Pictures/screenshot.png")),
+    Key([mod, "shift"], "s", lazy.spawn("sh -c 'scrot -s /home/daniel/imagenes/%Y-%m-%d_%H-%M-%S.png'")),
 
     # --- WINDOW MANAGEMENT ---
     Key([mod], "w", lazy.window.kill()),

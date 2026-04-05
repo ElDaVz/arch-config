@@ -8,11 +8,11 @@ decorations = "none"
 size = 12.0
 
 [font.normal]
-family = "JetBrains Mono"
+family = "InconsolataGo Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "JetBrains Mono"
+family = "InconsolataGo Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
