@@ -68,8 +68,9 @@ keys = [
 
     # --- BRIGHTNESS ---
     # ✅ NEW: brightness control (requires brightnessctl)
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
+    # --- BRIGHTNESS ---
+    Key([], "F7", lazy.spawn("brightnessctl set 10%-")),    
+    Key([], "F8", lazy.spawn("brightnessctl set +10%")),    
 ]
 
 for vt in range(1, 8):
