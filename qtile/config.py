@@ -10,7 +10,7 @@ from libqtile.utils import guess_terminal
 from libqtile import hook
 
 mod = "mod4"
-terminal = "kitty"
+terminal = "alacritty"
 
 keys = [
     # --- FOCUS (vim keys) ---
