@@ -1,4 +1,6 @@
 #!/bin/bash
+killall -q picom
+killall -q xbindkeys
 
 # Teclado
 setxkbmap latam &
@@ -6,12 +8,11 @@ setxkbmap latam &
 # Fondo
 feh --bg-scale ~/dotfiles/wallpapers/wallpaper.jpg &
 
-killall -q picom
-killall -q xbindkeys
-
 # Compositor
 picom &
 
 xbindkeys &
 
-~/.config/polybar/launch.sh &
+bash ~/.config/polybar/launch.sh --forest &
+
+libinput-gestures-setup start &
